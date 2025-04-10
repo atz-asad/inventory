@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('invoice_products', function (Blueprint $table) {
             $table->id();
+            $table->string('qty', 50);
+            $table->decimal('sale_price', 50);
+            $table->foreign('invoice_id')->constrained()->cascadeOnUpdate()->restrictOnDelete();
+            $table->foreign('product_id')->constrained()->cascadeOnUpdate()->restrictOnDelete();
+            $table->foreign('user_id')->constrained()->cascadeOnUpdate()->restrictOnDelete();
             $table->timestamps();
         });
     }

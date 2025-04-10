@@ -11,8 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
+        
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->string('name', 100);
+            $table->decimal('price', 8,2);
+            $table->string('unit', 50);
+            $table->string('img_url', 100);
+            $table->foreign('user_id')->constrained()->cascadeOnUpdate()->restrictOnDelete();
+            $table->foreign('category_id')->constrained()->cascadeOnUpdate()->restrictOnDelete();
             $table->timestamps();
         });
     }
